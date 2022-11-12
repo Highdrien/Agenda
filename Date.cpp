@@ -11,7 +11,7 @@ Date::Date(){
 
 Date::Date(int d, int m, int y){
     if (Check_Date(d, m, y)){
-        cout << "Warning: invalid date" << endl;
+        cout << "Warning: la date est invalide" << endl;
         day = 1;
         month = 1;
         year = 1915;
@@ -32,6 +32,17 @@ bool Date::Check_Date(int day, int month, int year){
         return true;
     return false;
 }
+
+int Date::compare(Date d){
+    if (year < d.year) return 1;
+    if (year > d.year) return -1;
+    if (month < d.month) return 1;
+    if (month > d.month) return -1;
+    if (day < d.day) return 1;
+    if (day > d.day) return -1;
+    return 0;
+}
+
 
 //Getter
 int Date::get_day(){
@@ -72,7 +83,7 @@ void Date::set_year(int new_year){
 
 void Date::set_Date(int new_day, int new_month, int new_year){
     if (Check_Date(new_day, new_month, new_year)){
-        cout << "Warning: invalid date" << endl;
+        cout << "Warning: la date est invalide" << endl;
         day = 1;
         month = 1;
         year = 1915;

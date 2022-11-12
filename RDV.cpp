@@ -11,11 +11,11 @@ RDV::RDV(){
 void RDV::Print(){
     d.Print();
     t.Print();
-    cout << "place of the RDV: " << place << endl;
+    cout << "lieu du RDV: " << place << endl;
     if (nb_contributors == 0)
-        cout << "There are no contributors to this RDV." << endl;
+        cout << "Il n'y a pas de contributeur pour ce RDV." << endl;
     else{
-        cout << "Contributors are: ";
+        cout << "Les contributeurs sont: ";
         for (int i = 0; i < nb_contributors-1; i++)
             cout << contributors[i] << ", ";
         cout << contributors[nb_contributors-1] << "." << endl;
@@ -28,12 +28,14 @@ void RDV::add_contributor(string name){
     nb_contributors = nb_contributors + 1;
 }
 
-void RDV::set_contributor(int i, string name){
-    contributors[i] = name;
+int RDV::compare(RDV r){
+    int date_compare = d.compare(r.d);  // compare les dates
+    if (date_compare != 0)              // si ce n'est pas les mêmes alors on renvoie la comparaison de date
+        return date_compare;
+    return t.compare(r.t);              // sinon on renvoie la comparaison des heures
 }
 
-bool RDV::is_compatible_with(RDV r){
-    bool same_date = (d.get_day() == r.d.get_day()) && (d.get_month() == r.d.get_month()) && (d.get_year() == r.d.get_year());
-    bool same_time = (t.get_hour() == r.t.get_hour()) && (t.get_minute() == r.t.get_minute());
-    return same_date && same_time;
+// Setteur
+void RDV::set_contributor(int i, string name){
+    contributors[i] = name;
 }

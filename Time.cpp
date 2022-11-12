@@ -14,7 +14,7 @@ Time::Time(int h, int m){
         minute = m;
     }
     else{
-        cout << "Warning: invalid time" << endl;
+        cout << "Warning: l'heure est invalide" << endl;
         hour = 0;
         minute = 0;
     }
@@ -22,6 +22,14 @@ Time::Time(int h, int m){
 
 void Time::Print(){
     cout << "Time: " << hour <<":" << minute << endl;
+}
+
+int Time::compare(Time t){
+    if (hour < t.hour) return 1;
+    if (hour > t.hour) return -1;
+    if (minute < t.minute) return 1;
+    if (minute > t.minute) return -1;
+    return 0;
 }
 
 //Getter
