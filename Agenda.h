@@ -3,15 +3,17 @@
 #include "Noeud.h"
 #include "RDV.h"
 
+// Agenda est une une liste chaînée de Noeud
+
 class Agenda
 {
     public:
-        Agenda();
-        Agenda(const Agenda&);
-        void add(RDV rdv);
-        void suppr();
-        void clear();
-        void Print();
+        Agenda();                   // crée un agenda vide
+        Agenda(const Agenda&);      // copie l'agneda
+        void add(RDV rdv);          // ajoute un rdv à l'agenda
+        void suppr();               // supprime le rdv de tête (= le deriner rdv ajouté)
+        void clear();               // supprimer tous les rdv de l'agenda
+        void Print();               // affiche l'agenda
 
     private:
         Noeud* pointeur;
